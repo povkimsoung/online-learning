@@ -1,0 +1,4 @@
+"use client";
+import { Moon, Sun } from "lucide-react";
+import { useEffect, useState } from "react";
+export function ThemeToggle() { const [dark, setDark] = useState(false); useEffect(() => { const enabled = localStorage.theme === "dark" || (!localStorage.theme && matchMedia("(prefers-color-scheme: dark)").matches); setDark(enabled); document.documentElement.classList.toggle("dark", enabled); }, []); const toggle = () => { const next = !dark; setDark(next); document.documentElement.classList.toggle("dark", next); localStorage.theme = next ? "dark" : "light"; }; return <button onClick={toggle} aria-label="Toggle color theme" className="rounded-lg p-2 text-slate-600 transition hover:bg-slate-100 hover:text-brand-600 dark:text-slate-300 dark:hover:bg-slate-800">{dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}</button>; }

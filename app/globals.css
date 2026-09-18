@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { @apply border-slate-200 dark:border-slate-800; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100; }
+  input, select { @apply outline-none ring-0; }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .section-space { @apply py-16 sm:py-20; }
+  .eyebrow { @apply mb-3 inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-700 dark:bg-brand-950 dark:text-brand-100; }
+  .section-title { @apply text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl dark:text-white; }
+  .muted { @apply text-slate-600 dark:text-slate-400; }
+}

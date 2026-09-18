@@ -1,0 +1,2 @@
+"use client";
+export default function CoursesError({ reset }: { error: Error; reset: () => void }) { return <div className="container-page section-space text-center"><h1 className="section-title">We couldn’t load courses</h1><p className="mt-3 text-slate-600 dark:text-slate-400">Something went wrong while loading this view.</p><button onClick={reset} className="mt-6 rounded-lg bg-brand-600 px-5 py-3 text-sm font-bold text-white">Try again</button></div>; }
