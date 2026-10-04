@@ -1,4 +1,14 @@
 import { notFound } from "next/navigation";
-import { getCourse, courses } from "@/data/courses";
-import { CourseDetail } from "@/components/courses/course-detail";
-export default async function CourseDetailsPage({ params }: { params: Promise<{ id: string }> }) { const { id } = await params; const course = getCourse(Number(id)); if (!course) notFound(); return <CourseDetail course={course} related={courses.filter(c => c.category === course.category && c.id !== course.id).slice(0, 3)} />; }
+import { ApiCourseDetail } from "@/components/courses/api-course-detail";
+import { ApiLesson, getApiCourse, getApiLessons } from "@/lib/elearning-api";
+
+export const dynamic = "force-dynamic";
+
+export default async function CourseDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  try {
+    const [course, lessonResponse] = await Promise.all([getApiCourse(id), getApiLessons(id)]);
+    const lessons = (lessonResponse.lessons ?? []).filter((lesson): lesson is ApiLesson => typeof lesson !== "string");
+    return <ApiCourseDetail course={course} lessons={lessons} />;
+  } catch { notFound(); }
+}

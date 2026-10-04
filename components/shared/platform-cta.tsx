@@ -1,0 +1,6 @@
+import Link from "next/link";
+import { ArrowRight, Compass, GraduationCap, Sparkles } from "lucide-react";
+
+export function PlatformCta() {
+  return <section className="border-t bg-slate-950 py-14 text-white"><div className="container-page grid items-center gap-8 lg:grid-cols-[1fr_auto]"><div><p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-200"><Sparkles className="h-4 w-4" /> Keep your momentum</p><h2 className="mt-3 text-2xl font-extrabold tracking-tight sm:text-3xl">One focused lesson can change your next opportunity.</h2><p className="mt-3 max-w-2xl text-slate-300">Browse the live catalog, follow a guided path, and make progress that stays visible.</p></div><div className="flex flex-wrap gap-3"><Link href="/paths" className="inline-flex items-center gap-2 rounded-lg border border-white/20 px-4 py-3 text-sm font-bold hover:bg-white/10"><Compass className="h-4 w-4" /> Find a path</Link><Link href="/courses" className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-bold text-slate-950 hover:bg-brand-50"><GraduationCap className="h-4 w-4 text-brand-700" /> Explore courses <ArrowRight className="h-4 w-4" /></Link></div></div></section>;
+}
